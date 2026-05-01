@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Lexend:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "tertiary-fixed-dim": "#ffb95f",
+                "outline": "#8c90a0",
+                "surface-container-highest": "#2d3449",
+                "inverse-on-surface": "#283044",
+                "surface-container": "#171f33",
+                "on-surface-variant": "#c2c6d7",
+                "on-primary-fixed": "#001944",
+                "error-container": "#93000a",
+                "on-error": "#690005",
+                "surface-dim": "#0b1326",
+                "on-background": "#dae2fd",
+                "primary-fixed": "#d9e2ff",
+                "on-error-container": "#ffdad6",
+                "tertiary-container": "#ca8100",
+                "on-surface": "#dae2fd",
+                "tertiary": "#ffb95f",
+                "surface-container-lowest": "#060e20",
+                "surface-container-low": "#131b2e",
+                "primary-container": "#528dff",
+                "on-tertiary": "#472a00",
+                "on-tertiary-container": "#3e2400",
+                "secondary": "#4edea3",
+                "on-primary-container": "#00275f",
+                "surface-variant": "#2d3449",
+                "surface": "#0b1326",
+                "secondary-fixed-dim": "#4edea3",
+                "on-tertiary-fixed": "#2a1700",
+                "on-secondary-container": "#00311f",
+                "surface-container-high": "#222a3d",
+                "outline-variant": "#424754",
+                "on-secondary": "#003824",
+                "on-secondary-fixed-variant": "#005236",
+                "inverse-primary": "#0059c7",
+                "secondary-container": "#00a572",
+                "inverse-surface": "#dae2fd",
+                "on-primary": "#002d6d",
+                "on-tertiary-fixed-variant": "#653e00",
+                "secondary-fixed": "#6ffbbe",
+                "error": "#ffb4ab",
+                "background": "#0b1326",
+                "on-primary-fixed-variant": "#004299",
+                "surface-tint": "#afc6ff",
+                "primary-fixed-dim": "#afc6ff",
+                "on-secondary-fixed": "#002113",
+                "tertiary-fixed": "#ffddb8",
+                "primary": "#afc6ff",
+                "surface-bright": "#31394d"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "sm": "12px",
+                "md": "24px",
+                "xl": "64px",
+                "gutter": "24px",
+                "lg": "40px",
+                "xs": "4px",
+                "margin": "32px",
+                "base": "8px"
+            },
+            "fontFamily": {
+                "label-sm": ["Lexend"],
+                "display-lg": ["Space Grotesk"],
+                "label-md": ["Lexend"],
+                "headline-md": ["Space Grotesk"],
+                "body-md": ["Manrope"],
+                "body-lg": ["Manrope"],
+                "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(23, 31, 51, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+        }
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(82, 141, 255, 0.2);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(82, 141, 255, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full border-b border-white/10 bg-slate-900/80 backdrop-blur-xl flex justify-between items-center px-8 h-16 w-full z-50 shadow-[0_0_15px_rgba(46,125,255,0.1)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-500 text-2xl" data-icon="account_balance">account_balance</span>
+<span class="font-display-lg text-blue-400 text-2xl font-bold tracking-tighter">Civic Forge: Election Architect</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-blue-400 border-b-2 border-blue-500 pb-1" href="#">Simulation Builder</a>
+<a class="font-label-md text-slate-400 hover:text-slate-200 transition-all duration-300" href="#">Rules Config</a>
+<a class="font-label-md text-slate-400 hover:text-slate-200 transition-all duration-300" href="#">Results Lab</a>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-white/10 flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional user profile avatar for a civic tech platform. The avatar is a stylized geometric representation of a human silhouette using shades of deep blue and slate. The lighting is soft and sophisticated, set against a dark glassmorphic background consistent with a high-end educational software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCtkhTqPe5n-CtsAJoKNOOPCX54qyyM5GUhJVQK7d2wuV3XvTC2_D5Y3pE2IePpoxFM35zLunj4GrmUcQL3GA5qLD8z4YylTv_udd2cUq-yDsSuVAjPKkW2UELZ5y23FEM1cikZJDwuSbjaCOWtJyG3tqkP78dgTgNMSgvk4OZ3s0ybW9Qp7jMd9KvD-OWgZK5rAQ8jOllJC0kFWj-MlCjAQV0jYQl-cu4GxTh7j9IfD1Pfe8XnQ5Zft9wKzREYw9HjxHG1vfk7Kcc"/>
+</div>
+</nav>
+</header>
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] z-40 bg-slate-950/90 backdrop-blur-2xl h-screen w-72 border-r border-white/10 hidden lg:block">
+<div class="p-6">
+<p class="font-label-sm text-blue-400 font-bold mb-4">ELECTION MODULE</p>
+<div class="space-y-1">
+<div class="bg-blue-500/10 text-blue-400 border-l-4 border-blue-500 px-6 py-4 flex items-center gap-4 transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-label-md">Simulation Builder</span>
+</div>
+<div class="text-slate-400 px-6 py-4 flex items-center gap-4 hover:bg-white/5 hover:text-slate-100 transition-colors hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md">Rules Config</span>
+</div>
+<div class="text-slate-400 px-6 py-4 flex items-center gap-4 hover:bg-white/5 hover:text-slate-100 transition-colors hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md">Results Lab</span>
+</div>
+<div class="text-slate-400 px-6 py-4 flex items-center gap-4 hover:bg-white/5 hover:text-slate-100 transition-colors hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="font-label-md">Educational Insights</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-72 pt-16 min-h-screen">
+<div class="p-margin max-w-7xl mx-auto">
+<!-- Hero Header for Context -->
+<section class="mb-xl">
+<h1 class="font-display-lg text-on-surface mb-xs glow-text">Electoral Architecture Hub</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Design, simulate, and analyze the impact of diverse voting methodologies on real-world democratic outcomes.</p>
+</section>
+<!-- Grid for Feature Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- PREDICTED FEATURE CARD: Electoral Simulator -->
+<div class="glass-card rounded-xl p-md flex flex-col h-full glow-blue transition-transform duration-300 hover:scale-[1.02]">
+<!-- Top Section -->
+<div class="flex justify-between items-start mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 border border-primary/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="query_stats">query_stats</span>
+</div>
+<span class="bg-primary/20 text-primary text-label-sm px-3 py-1 rounded-full border border-primary/40 animate-pulse">POPULAR</span>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant text-label-sm px-3 py-1 rounded-lg border border-outline-variant">Intermediate</span>
+</div>
+<!-- Content Section -->
+<div class="mb-lg flex-grow">
+<h2 class="font-headline-lg text-on-surface mb-sm tracking-tight">Electoral Simulator</h2>
+<p class="font-body-md text-on-surface-variant mb-md leading-relaxed">
+                            Compare First-Past-The-Post vs. Ranked Choice Voting in real-time datasets to understand systemic shifts in candidate viability.
+                        </p>
+<!-- Features List -->
+<ul class="space-y-sm">
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-on-surface">Analyze Proportional Rep</span>
+</li>
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-on-surface">Predict Winner Shifts</span>
+</li>
+<li class="flex items-center gap-3 text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-on-surface">Suppression Heatmaps</span>
+</li>
+</ul>
+</div>
+<!-- CTA Section -->
+<div class="mt-auto">
+<button class="w-full bg-gradient-to-r from-primary-container to-inverse-primary hover:brightness-110 active:scale-[0.98] transition-all duration-300 h-12 rounded-full flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-label-md text-on-primary-container font-bold uppercase tracking-wider">Launch Sim</span>
+</button>
+</div>
+<!-- Decorative Subtle Glow -->
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-[60px] rounded-full pointer-events-none"></div>
+</div>
+<!-- Secondary Comparison Module -->
+<div class="glass-card rounded-xl p-md flex flex-col h-full border-white/5 opacity-80">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[24px]" data-icon="history_edu">history_edu</span>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant text-label-sm px-3 py-1 rounded-lg border border-outline-variant">Beginner</span>
+</div>
+<div class="mb-lg flex-grow">
+<h2 class="font-headline-lg text-on-surface mb-sm">Rulebook Designer</h2>
+<p class="font-body-md text-on-surface-variant mb-md">
+                            Draft constitutional frameworks and test their legal integrity against historical precedents and modern human rights standards.
+                        </p>
+</div>
+<div class="mt-auto">
+<button class="w-full border border-outline-variant hover:bg-white/5 transition-all h-12 rounded-full flex items-center justify-center gap-2 text-on-surface-variant font-label-md">
+                            Explore Module
+                        </button>
+</div>
+</div>
+<!-- Tertiary Analytics Module -->
+<div class="glass-card rounded-xl p-md flex flex-col h-full border-white/5 opacity-80">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest border border-outline-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[24px]" data-icon="hub">hub</span>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant text-label-sm px-3 py-1 rounded-lg border border-outline-variant">Advanced</span>
+</div>
+<div class="mb-lg flex-grow">
+<h2 class="font-headline-lg text-on-surface mb-sm">Demographic Lab</h2>
+<p class="font-body-md text-on-surface-variant mb-md">
+                            Inject synthetic population models into voting grids to simulate how shifts in migration and age affect partisan leanings.
+                        </p>
+</div>
+<div class="mt-auto">
+<button class="w-full border border-outline-variant hover:bg-white/5 transition-all h-12 rounded-full flex items-center justify-center gap-2 text-on-surface-variant font-label-md">
+                            Explore Module
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="lg:pl-72 w-full mt-xl">
+<div class="bg-slate-950 flex flex-col md:flex-row justify-between items-center px-8 py-6 border-t border-white/5 w-full">
+<span class="text-xs font-space-grotesk text-slate-500">© 2024 Civic-Tech Simulation Labs. All rights reserved.</span>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a class="text-xs font-space-grotesk text-slate-600 hover:text-blue-300 transition-colors" href="#">Methodology</a>
+<a class="text-xs font-space-grotesk text-slate-600 hover:text-blue-300 transition-colors" href="#">Glossary</a>
+<a class="text-xs font-space-grotesk text-slate-600 hover:text-blue-300 transition-colors" href="#">Report Bias</a>
+</div>
+</div>
+</footer>
+</body></html>

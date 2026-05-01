@@ -1,0 +1,168 @@
+.voteready-page { min-height: 100vh; padding-bottom: 80px; }
+
+.vr-hero {
+  position: relative;
+  padding: 64px 0 48px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.vr-hero-glow {
+  position: absolute;
+  top: -80px;
+  right: -100px;
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.15), transparent 70%);
+  pointer-events: none;
+}
+.vr-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; margin-bottom: 12px; letter-spacing: -1px; }
+.vr-hero p { font-size: 16px; color: var(--text-secondary); }
+
+.vr-body { padding-top: 40px; }
+
+/* Steps */
+.steps-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 20px 28px;
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  min-width: 160px;
+}
+.step-item.active { color: var(--text-primary); }
+.step-item.done { color: var(--civic-green); }
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.step-item.active .step-circle { background: var(--civic-blue); border-color: var(--civic-blue); color: #fff; box-shadow: 0 0 16px rgba(37,99,235,0.4); }
+.step-item.done .step-circle { background: var(--civic-green); border-color: var(--civic-green); color: #fff; }
+.step-circle .material-icons-round { font-size: 16px !important; }
+.step-title { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.step-desc { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.step-connector { flex: 1; height: 1px; background: var(--border-subtle); margin: 0 12px; min-width: 20px; }
+
+.vr-columns { display: grid; grid-template-columns: 1fr 320px; gap: 24px; align-items: flex-start; }
+
+/* Form */
+.form-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.form-subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; }
+.form-field.full-span { grid-column: 1 / -1; }
+.form-field label { font-size: 12px; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.04em; text-transform: uppercase; }
+.form-field input,
+.form-field select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-field input:focus,
+.form-field select:focus { border-color: var(--civic-blue-light); box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+.form-field select option { background: var(--bg-card); }
+.full-width { width: 100%; justify-content: center; }
+.form-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 8px; }
+
+/* Scan Zone */
+.scan-zone {
+  border: 2px dashed var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 16px;
+  background: var(--bg-secondary);
+}
+.scan-zone:hover { border-color: var(--civic-blue-light); background: rgba(37,99,235,0.05); }
+.scan-zone.scanned { border-color: var(--civic-green); border-style: solid; background: rgba(5,150,105,0.05); }
+.scan-icon { font-size: 48px !important; color: var(--civic-blue-light); }
+.scan-ok { font-size: 48px !important; color: var(--civic-green); }
+.scan-zone p { font-size: 14px; color: var(--text-secondary); }
+.security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  background: rgba(5,150,105,0.06);
+  border: 1px solid rgba(5,150,105,0.2);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+/* Confirmed */
+.confirmed-card { text-align: center; }
+.confirmed-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(5,150,105,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 32px rgba(5,150,105,0.2);
+}
+.confirmed-icon .material-icons-round { font-size: 36px !important; color: #34D399; }
+.status-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; text-align: left; }
+.status-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+.status-row-left { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; }
+
+/* Sidebar */
+.vr-sidebar { display: flex; flex-direction: column; gap: 16px; }
+.sidebar-card { display: flex; flex-direction: column; gap: 8px; }
+.sidebar-card-title { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; }
+.deadline-item { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+.deadline-item:last-child { border-bottom: none; }
+.deadline-days { font-size: 28px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; width: 48px; text-align: center; flex-shrink: 0; }
+.deadline-days.red { color: #F87171; }
+.deadline-days.amber { color: #FCD34D; }
+.deadline-label { font-size: 13px; font-weight: 600; }
+.deadline-date { font-size: 12px; color: var(--text-muted); }
+.chat-bubble {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+  .vr-columns { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+}
