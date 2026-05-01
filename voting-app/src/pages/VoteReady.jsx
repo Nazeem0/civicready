@@ -13,9 +13,7 @@ export default function VoteReady() {
   const [activeStep, setActiveStep] = useState(1);
   const [scanned, setScanned] = useState(false);
   const [idFile, setIdFile] = useState(null);
-  const [ocrResults, setOcrResults] = useState(null);
   const [isScanning, setIsScanning] = useState(false);
-  const [scanStatus, setScanStatus] = useState('');
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -102,7 +100,6 @@ export default function VoteReady() {
     if (e.target.files && e.target.files[0]) {
       setIdFile(e.target.files[0]);
       setScanned(false);
-      setOcrResults(null);
     }
   };
 
@@ -113,7 +110,6 @@ export default function VoteReady() {
     }
     setError('');
     setIsScanning(true);
-    setScanStatus('Uploading and extracting details via ML OCR...');
     
     try {
       const formData = new FormData();
@@ -133,8 +129,6 @@ export default function VoteReady() {
       const data = await res.json();
       
       if (res.ok && data.data?.verified) {
-        setOcrResults(data.data);
-        setScanStatus('Identity Verified');
         setScanned(true);
       } else {
         setError(data.message || 'Failed to verify Aadhar card. Please ensure the image is clear.');
