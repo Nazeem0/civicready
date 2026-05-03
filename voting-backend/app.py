@@ -99,6 +99,19 @@ def create_app(config_name=None):
     # ── Global error handlers ──────────────────────────────────────────────────
     from utils.responses import error_response
 
+    @app.route('/')
+    def index():
+        return """
+        <html>
+            <body style="background-color: #1a1a2e; color: white; font-family: sans-serif; text-align: center; padding-top: 20%;">
+                <h1>CivicReady API Backend is Running 🚀</h1>
+                <p>This is the headless API server. There is no user interface here.</p>
+                <p>Please visit the Frontend Website to use the application:</p>
+                <a href="https://voting-app-48888695514.us-central1.run.app" style="color: #4f46e5; font-size: 20px; font-weight: bold; text-decoration: none;">👉 Go to CivicReady Frontend 👈</a>
+            </body>
+        </html>
+        """
+
     @app.errorhandler(404)
     def not_found(e):
         return error_response('Resource not found', 404)
