@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './GerrymanderingLab.css';
 
 // 6x6 grid = 36 precincts
@@ -219,6 +220,13 @@ export default function GerrymanderingLab() {
     <div className="gerry-page">
       <div className="gerry-header">
         <div className="container animate-fade-up">
+          <Link to="/labs" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'var(--text-secondary)', textDecoration:'none', fontSize:13, fontFamily:"'Lexend',sans-serif", fontWeight:600, marginBottom:16, padding:'8px 16px', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:8, transition:'all 0.2s' }}
+            onMouseEnter={e => { e.currentTarget.style.color='var(--civic-teal)'; e.currentTarget.style.borderColor='rgba(16,185,129,0.3)'; e.currentTarget.style.background='rgba(16,185,129,0.07)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color='var(--text-secondary)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; e.currentTarget.style.background='rgba(255,255,255,0.04)'; }}
+          >
+            <span className="material-icons-round" style={{ fontSize:18 }}>arrow_back</span>
+            Back to Democracy Lab
+          </Link>
           <div className="badge badge-teal" style={{ marginBottom: 12 }}>
             <span className="material-icons-round" style={{ fontSize: 12 }}>science</span> Ethics Simulator
           </div>

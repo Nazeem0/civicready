@@ -148,6 +148,15 @@ export default function ElectoralSimulator() {
       </aside>
 
       <main style={{ marginLeft:220, padding:'32px 32px 60px' }}>
+        {/* Back Button */}
+        <Link to="/labs" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'#8c90a0', textDecoration:'none', fontSize:13, fontFamily:"'Lexend',sans-serif", fontWeight:600, marginBottom:20, padding:'8px 16px', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:8, transition:'all 0.2s' }}
+          onMouseEnter={e => { e.currentTarget.style.color='#528dff'; e.currentTarget.style.borderColor='#528dff44'; e.currentTarget.style.background='rgba(82,141,255,0.07)'; }}
+          onMouseLeave={e => { e.currentTarget.style.color='#8c90a0'; e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; e.currentTarget.style.background='rgba(255,255,255,0.04)'; }}
+        >
+          <span className="material-icons-round" style={{ fontSize:18 }}>arrow_back</span>
+          Back to Democracy Lab
+        </Link>
+
         {/* Header */}
         <div style={{ marginBottom:32 }}>
           <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:8 }}>
