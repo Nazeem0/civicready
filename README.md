@@ -92,13 +92,6 @@ gunicorn app:app
 
 Use `python app.py` for local development and `gunicorn app:app` for production deployment.
 
-## Deployment 🚀
-
-### Frontend on Vercel ☁️
-Use Vercel for the Vite frontend. Set the build command to `npm install && npm run build` and the output directory to `dist`.
-
-### Backend on Render ☁️
-Use Render for the Flask backend. Set the build command to `pip install -r requirements.txt` and the start command to `gunicorn app:app` or the correct Flask app path for your project.
 
 ## Production Notes 📌
 
