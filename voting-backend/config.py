@@ -27,8 +27,19 @@ class ProductionConfig(Config):
     DEBUG = False
 
 
+class TestingConfig(Config):
+    TESTING = True
+    DEBUG = True
+    MONGODB_SETTINGS = {
+        'host': 'mongomock://localhost/civicready_test'
+    }
+    RATELIMIT_ENABLED = False
+    JWT_ACCESS_TOKEN_EXPIRES = False
+
+
 config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
+    'testing': TestingConfig,
     'default': DevelopmentConfig,
 }

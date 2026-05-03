@@ -8,10 +8,7 @@ RUN npm install
 
 COPY . .
 
-# We'll pass the backend URL during deployment
-ARG VITE_API_BASE_URL
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
-
+# Files already copied, including .env.production
 RUN npm run build
 
 # Stage 2: Serve

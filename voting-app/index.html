@@ -5,11 +5,41 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="CivicReady — Secure, non-partisan voter platform. Check eligibility, track deadlines, and explore Democracy Lab simulations." />
-    <meta name="keywords" content="voting, civic, democracy, voter registration, election" />
+    <meta name="keywords" content="voting, civic, democracy, voter registration, election, ballot" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CivicReady | Voter Platform" />
+    <meta property="og:description" content="Secure, non-partisan voter platform. Check eligibility, track deadlines, and explore Democracy Lab simulations." />
+    <meta property="og:site_name" content="CivicReady" />
+
+    <!-- Accessibility: Skip Navigation Link -->
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #4f46e5;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        z-index: 9999;
+        border-radius: 0 0 4px 0;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+
     <title>CivicReady | Voter Platform</title>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Accessibility: Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="root" role="application" aria-label="CivicReady Voter Platform"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

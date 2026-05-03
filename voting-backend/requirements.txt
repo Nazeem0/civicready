@@ -8,3 +8,8 @@ python-dotenv
 marshmallow
 pymongo
 gunicorn
+dnspython
+pytest
+pytest-flask
+mongomock
+google-cloud-storage
