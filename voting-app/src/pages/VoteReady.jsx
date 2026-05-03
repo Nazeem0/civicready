@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { apiFetch } from '../api';
+import { apiFetch, API_BASE_URL } from '../api';
 import './VoteReady.css';
 
 const steps = [
@@ -118,7 +118,7 @@ export default function VoteReady() {
       formData.append('dob', form.dob);
 
       const token = localStorage.getItem('access_token');
-      const res = await fetch('http://localhost:5000/api/voter/verify-aadhar', {
+      const res = await fetch(`${API_BASE_URL}/voter/verify-aadhar`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
