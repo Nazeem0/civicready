@@ -156,7 +156,6 @@ export default function BillRunner() {
   if (gameState === 'setup') {
     return (
       <div className="br-page">
-      <div className="br-page">
         <div className="br-header">
           <div className="container animate-fade-up">
             <Link to="/labs" style={{ display:'inline-flex', alignItems:'center', gap:8, color:'var(--text-secondary)', textDecoration:'none', fontSize:13, fontFamily:"'Lexend',sans-serif", fontWeight:600, marginBottom:16, padding:'8px 16px', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:8, transition:'all 0.2s' }}
