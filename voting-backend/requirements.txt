@@ -13,3 +13,11 @@ pytest
 pytest-flask
 mongomock
 google-cloud-storage
+google-generativeai
+flask-compress
+flask-talisman
+flask-caching
+firebase-admin
+google-cloud-translate
+google-cloud-language
+google-cloud-vision

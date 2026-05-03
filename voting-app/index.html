@@ -39,7 +39,57 @@
   <body>
     <!-- Accessibility: Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Hidden Google Translate widget — controlled by navbar language selector -->
+    <div id="google_translate_element" style="display:none;"></div>
     <div id="root" role="application" aria-label="CivicReady Voter Platform"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Google Website Translator (Google Service) -->
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'hi,es,fr,ar,zh-CN,pt,de,ta,ur,te',
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+
+      // Global helper called by Navbar language selector
+      window.triggerGoogleTranslate = function(langCode) {
+        var map = { 'zh': 'zh-CN' };
+        var gtLang = map[langCode] || langCode;
+        var attempt = 0;
+        var trySelect = setInterval(function() {
+          var select = document.querySelector('.goog-te-combo');
+          if (select) {
+            clearInterval(trySelect);
+            select.value = gtLang;
+            select.dispatchEvent(new Event('change'));
+          } else if (++attempt > 20) {
+            clearInterval(trySelect);
+          }
+        }, 200);
+      };
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Prevent Google Translate from mangling Material Icons -->
+    <script>
+      (function() {
+        function markNotranslate() {
+          document.querySelectorAll(
+            '.material-icons-round, .material-icons, .nav-logo-icon, [data-notranslate]'
+          ).forEach(function(el) {
+            el.classList.add('notranslate');
+            el.setAttribute('translate', 'no');
+          });
+        }
+        // Run on load and watch for React-rendered DOM changes
+        document.addEventListener('DOMContentLoaded', markNotranslate);
+        var obs = new MutationObserver(markNotranslate);
+        document.addEventListener('DOMContentLoaded', function() {
+          obs.observe(document.body, { childList: true, subtree: true });
+        });
+      })();
+    </script>
   </body>
 </html>

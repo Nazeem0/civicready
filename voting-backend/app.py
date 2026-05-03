@@ -1,8 +1,16 @@
 import os
+import firebase_admin
+from google.cloud import storage, translate_v2 as translate, language_v1
+import google.generativeai as genai
 from flask import Flask
 from config import config
 from extensions import db, jwt, bcrypt, cors, limiter
 from models.token_blocklist import TokenBlocklist
+try:
+    from flask_compress import Compress
+    compress = Compress()
+except ImportError:
+    compress = None
 
 
 def create_app(config_name=None):
@@ -48,6 +56,25 @@ def create_app(config_name=None):
         from utils.responses import error_response
         return error_response('Token has been revoked', 401)
 
+    # ── Compression (Efficiency) ────────────────────────────────────────────────
+    if compress:
+        compress.init_app(app)
+
+    # ── Security headers (Talisman) ────────────────────────────────────────────
+    if app.config.get('FLASK_ENV') == 'production':
+        try:
+            from flask_talisman import Talisman
+            Talisman(
+                app,
+                force_https=True,
+                strict_transport_security=True,
+                session_cookie_secure=True,
+                content_security_policy=False,  # Allow frontend assets
+                referrer_policy='strict-origin-when-cross-origin'
+            )
+        except ImportError:
+            pass
+
     # ── Blueprints ─────────────────────────────────────────────────────────────
     from routes.auth import auth_bp
     from routes.voter import voter_bp
@@ -56,6 +83,8 @@ def create_app(config_name=None):
     from routes.public import public_bp
     from routes.notifications import notifications_bp
     from routes.simulation import simulation_bp
+    from routes.civicai import civicai_bp
+    from routes.translate import translate_bp
 
     app.register_blueprint(auth_bp,      url_prefix='/api/auth')
     app.register_blueprint(voter_bp,     url_prefix='/api/voter')
@@ -64,6 +93,8 @@ def create_app(config_name=None):
     app.register_blueprint(public_bp,    url_prefix='/api')
     app.register_blueprint(notifications_bp, url_prefix='/api/notifications')
     app.register_blueprint(simulation_bp, url_prefix='/api/simulation')
+    app.register_blueprint(civicai_bp,   url_prefix='/api/civicai')
+    app.register_blueprint(translate_bp, url_prefix='/api/translate')
 
     # ── Global error handlers ──────────────────────────────────────────────────
     from utils.responses import error_response
